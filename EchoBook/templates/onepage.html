@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} Page</title>
+</head>
+<body>
+    <h1>{{ .Title }}</h1>
+    <h3>Author - {{ .Author }}</h3><br><br>
+    <form action="/bookstore/Delete/{{ .ID }}" method="POST" >
+        <input type="hidden" name="_method" value="DELETE"/>
+        <button type="submit">Delete</button>
+    </form>
+    <a href="/bookstore/Update/{{ .ID }}"><h4>Update this page</h4></a>
+    <a href="/bookstore"><h4>Go To Main</h4></a>
+</body>
+</html>

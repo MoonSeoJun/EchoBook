@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ .Title }} Update Page</title>
+</head>
+<body>
+    <h1>Write Title and Author name</h1>
+    <form action="/bookstore/Update/Complete/{{ .ID }}" method="POST">
+        <input type="hidden" name="_method" value="PUT"/>
+        Title  :   <input type="text" name="title" value="{{ .Title }}"><br><br>
+        Author : <input type="text" name="author" value="{{ .Author }}"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
