@@ -46,13 +46,25 @@ func main() {
 
 	e.GET("/bookstore", controllers.GetAllBooks)
 	e.GET("/bookstore/:id", controllers.GetBook)
+
+	// Create Page
 	e.GET("/bookstore/Create", func(c echo.Context) error {
 		return c.Render(http.StatusOK, "createpage.html", nil)
 	})
+
+	// Update Page
 	e.GET("/bookstore/Update/:id", controllers.GetBookToUpdate)
-	e.POST("/bookstore/Create/Commplete", controllers.CreateBook)
-	e.POST("/bookstore/Update/Complete/:id", controllers.UpdateBook)
-	e.POST("/bookstore/Delete/:id", controllers.DeleteBook)
+
+	Compage := e.Group("/Complete")
+
+	// Create Complete
+	Compage.POST("/Create", controllers.CreateBook)
+
+	// Update Complete
+	Compage.POST("/Update/:id", controllers.UpdateBook)
+
+	// Delete Complete
+	Compage.POST("/Delete/:id", controllers.DeleteBook)
 
 	e.Logger.Fatal(e.Start(":8080"))
 }

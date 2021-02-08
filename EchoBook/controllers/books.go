@@ -15,11 +15,11 @@ func CreateBook(c echo.Context) error {
 		return err
 	}
 
-	if u.Title == "" || u.Author == "" {
+	if u.Title == "" || u.Author == "" || u.Content == "" {
 		return c.Render(http.StatusBadRequest, "badrequest.html", nil)
 	}
 
-	createbook := models.Book{Title: u.Title, Author: u.Author}
+	createbook := models.Book{Title: u.Title, Author: u.Author, Content: u.Content}
 
 	models.DB.Create(&createbook)
 
